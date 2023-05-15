@@ -15,3 +15,15 @@ function add(){
 
   return sum
 }
+
+
+
+
+function currying(fn,...args){
+  if(fn.length<=args.length){
+    return fn(...args)
+  }
+  return function(...args1){
+    return currying(fn,...args,...args1)
+  }
+}

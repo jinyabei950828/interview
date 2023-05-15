@@ -50,14 +50,55 @@ Promise.all = function(promises){
     list[i] = data
     count++
     if(count===promises.length){
-      resolve(list)
+      return resolve(list)
     }
   }
-  return Primise((resolve,reject)=>{
+  return new Promise((resolve,reject)=>{
+    if(!Array.isArray(arr)){
+      throw new Error(`${arr} must be a array`)
+    }
     for (let i = 0; i < promises.length; i++) {
       promises[i].then(res=>{
-        handler(i,res)
-      },err=>reject(err))
+        return handler(i,res)
+      }).catch(err=> {
+        return reject(err)
+      })
     }
   })
+}
+
+/**
+ * promise.retry:执行一个函数，如果不成功最多可以尝试times次
+ * @param {所要执行的函数} fn 
+ * @param {尝试的次数} times 
+ * @param {延迟的时间} delay 
+ */
+Promise.retry = function (fn,times,delay){
+  return new Promise(function(resolve,reject){
+    var error;
+    var attempt = function(){
+      if(times==0){
+        reject(error)
+      }else{
+        fn().then(resolve).catch(function(e){
+          time--
+          error = e
+          setTimeout(function(){
+            attempt()
+          },delay)
+        })
+      }
+    }
+  })
+}
+
+//同步的callback包装成promise形式
+function promisify(fn,context){
+  return (...args)=>{
+    return new Promise((resolve,reject)=>{
+      fn.apply(context,[...args,(err,res)=>{
+        return err?reject(err):resolve(res)
+      }])
+    })
+  }
 }

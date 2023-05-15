@@ -20,7 +20,7 @@ class Event{
     });
   }
 
-  remove(type,handler){
+  off(type,handler){
     if(!this.events[type]){
       return new Error("无效事件")
     }
@@ -42,7 +42,7 @@ class Event{
   once(type,handler){
     function fn(){
       handler()
-      this.remove(type,handler)
+      this.off(type,handler)
     }
     this.on(type,fn)
   }
