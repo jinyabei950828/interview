@@ -53,7 +53,7 @@
     ---内部样式表
     ---外部样式表（link、import）
 
-### 5.样式优先级（3）
+### 5.样式优先级（4）
 
     --- id选择器（100）
 
@@ -69,13 +69,13 @@
     --- 后代选择器
     --- 通配选择器
 
-### 6.盒模型（5）
+### 6.盒模型（6）
 
 ### 7.display 属性值以及区别 （1）
 
 ### 8.position 属性值以及区别（2）
 
-### 9.flex（3）
+### 9.flex（4）
 
     父容器
     --- flex-direction
@@ -123,7 +123,7 @@
     --- overflow:hidden
     --- 使用伪类元素:after
 
-### 17.什么是 BFC (4)
+### 17.什么是 BFC (5)
 
     BFC特性
     ---同一个BFC下margin会重叠
@@ -134,7 +134,7 @@
     如何创建BFC
     ---position设为absolute或者fixed
     ---float不为none
-    ---overflow设置为hidden
+    ---overflow设置为hidden(overflow不为visible)
     ---display设置为inline-block或者inline-table或flex或者grid
     ---根元素
 
@@ -190,6 +190,34 @@
     ---利用css3中的clip-path属性，旋转
     （clip-path: polygon(0px 0px, 0px 30px, 30px 0px); // 将坐标(0,0),(0,30),(30,0)连成一个三角形
     transform: rotate(225deg); // 旋转225，变成下三角）
+
+### 28.说下页面的布局方式(1)
+
+    ---flex布局
+       1.容器属性(flex-direction flex-wrap flex-flow justify-content（水平主轴对齐方式） align-items align-content)
+       2.元素属性(order flex-grow flex-shrink flex-basis flex align-self align-items)
+    --- rem布局
+        缺点:1.ie不支持、pc使用不多
+             2.计算数据量大
+    --- 百分比布局
+        缺点:1.计算困难
+             2.各属性使用百分比，相对父元素的属性并不是唯一的
+    --- 浮动布局
+        缺点:1.高度塌陷
+
+### 29.隐藏页面的某个元素 （1）
+
+    --- opactiy:0
+    --- display:none(回流和重绘)
+    --- visiblility:hidden（重绘）
+    --- position:absolute
+    --- z-index:负值
+    --- clip/clip-path
+    --- transform:scale(0,0)
+
+### 30.sass 如何实现复用(1)
+
+    --- sass使用@import来处理多个sass文件。sass的@import规则在生成css文件时就把相关文件导入进来，无需发起额外的下载请求。另外，所有在被导入文件中定义的变量和混合器（@mixin->@include）均可在导入文件中使用。
 
 ## JS 基础
 
@@ -296,7 +324,9 @@
     ---构造器调用
     ---call、apply、bind调用
 
-### 20.什么是 dom 事件流？什么是事件委托？(3)
+### 20.什么是 dom 事件流？什么是事件委托？(5)
+
+    --- dom2级事件模型(w3c标签模型)---事件捕获->事件处理->事件冒泡
 
 ### 21.defer 和 async 都表示什么 (1)
 
@@ -555,9 +585,9 @@
     ---3.cookie双重验证
     ---4.Samesite
 
-### 11.浏览器存储（2）
+### 11.浏览器存储（3）
 
-### 12.浏览器的缓存策略（2）
+### 12.浏览器的缓存策略（3）
 
 ### 13.计算机网络模型以及各层协议（2）
 
@@ -618,6 +648,10 @@
 ### 18.从浏览器输入 url 后都经历了什么（2）
 
 ### 19.http1.0 和 http1.1,还有 2.0 有什么区别？（1）
+
+### 20.加载 css 的是否会阻塞浏览器的解析和渲染(1)
+
+    --- 在 DOM 解析过程中，css 不会阻塞解析，在渲染过程中会阻塞渲染
 
 ---
 
@@ -836,10 +870,40 @@
 
 ### 24.手写 jsonp(1)
 
-
-### 25.手写实现LazyMan(1)
+### 25.手写实现 LazyMan(1)
 
 ---
+
+框架（vue）
+因为我一直用的都是 vue 框架，所以问的也都是跟 vue 相关的。vue 中的高频题也不外乎双向绑定、虚拟 dom、diff 算法这些。
+
+watch 与 computed 的区别
+vue 生命周期及对应的行为
+vue 父子组件生命周期执行顺序
+组件间通讯方法
+如何实现一个指令
+vue.nextTick 实现原理
+diff 算法
+如何做到的双向绑定
+虚拟 dom 为什么快
+如何设计一个组件
+
+webpack
+webpack 也基本上成了必考的内容，一般会问是否配置过 webpack、做过哪些优化之类的。
+
+用过哪些 loader 和 plugin
+loader 的执行顺序为什么是后写的先执行
+webpack 配置优化
+webpack 打包优化（happypack、dll）
+plugin 与 loader 的区别
+webpack 执行的过程
+如何编写一个 loader、plugin
+tree-shaking 作用，如何才能生效
+
+性能优化
+
+首屏加载如何优化
+一个网页从请求到呈现花了很长时间，如何排查
 
 ￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥
 【面经】寒冬中的一年半前端跳槽 (百度、头条、腾讯、小米)(opens new window)
