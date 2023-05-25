@@ -1,20 +1,29 @@
-### 5-23 面经
+---
+# https://vitepress.dev/reference/default-theme-home-page
+layout: home
 
-### 算法:输入字符串,能变成数字的最长子串(口述)
+hero:
+  name: "贝贝的前端网站"
+  tagline: Try a little bit every day, and you will gain more
+  actions:
+    - theme: brand
+      text: Get Stared
+      link: /home/index
+    - theme: alt
+      text: View on Github
+      link: https://github.com/jinyabei950828
 
-### sleep函数--延迟五秒（具体做法）
-    ---宏任务和微任务执行过程
-
-### interface 和 type 的区别
-
-### ts 中常考点
-
-### a.b.C 如何取出，可能存在，可能不存在，如何取，如何最优
-
-### unknow 和 any的区别
-
-### 复杂数据类型如何处理，如何优化
-
-### token 的设置
-
-### 防止token被窃取
+features:
+  - title: 前端面经
+    details: 汇总html、css、javascript、浏览器原理、网络原理、性能优化等相关知识点
+  - title: Vue
+    details: Vue原理解析
+  - title: React
+    details: React项目实战及原理解析
+  - title: 微前端
+    details: 微前端实战
+  - title: node
+    details: node实战
+  - title: docker
+    details: 优化部署效率
+---
